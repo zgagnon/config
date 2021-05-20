@@ -12,7 +12,7 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
                 };
 
               };
-            background_opacity = 0.5;
+            background_opacity = 0.7;
         };
     };
 }

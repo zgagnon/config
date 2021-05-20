@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 with import <nixpkgs> {config = { allowUnfree = true; }; };
 
+let pkgsUnstable = import <nixpkgs-unstable> {};
+
+in
 
 {
 # Let Home Manager install and manage itself.
@@ -17,6 +20,7 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
 	home.sessionVariables = {
 		EDITOR = "vim";
 	};
+
 	home.packages = [
 		autorandr
 		zsh-powerlevel10k
@@ -28,6 +32,7 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
 			fasd
 			obsidian
 			pavucontrol
+      picom
       slack
 			spotify
 			trayer
@@ -43,6 +48,9 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
 			vimPlugins.vim-nix
 			vimPlugins.vim-ruby
 			vimPlugins.vim-surround
+      pkgsUnstable.wally-cli
+      xclip
+      xorg.xmodmap
 			zoom-us
 	];
 # Home Manager needs a bit of information about you and the
@@ -66,8 +74,10 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
 		dotDir = "rc";
 		initExtra = builtins.concatStringsSep "\n" [
 			"source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
-				"[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh"
-				''eval "$(fasd --init auto)"''						
+			"[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh"
+			''eval "$(fasd --init auto)"''						
+      "alias pbcopy='xclip -selection clipboard'"
+      "alias pbpaste='xclip -selection clipboard -o'"
 		];
 
 		history = {
