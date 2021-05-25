@@ -16,6 +16,7 @@ in
 		./role/nixos/index.nix
 		./programs/alacritty.nix
 		./programs/git.nix
+		./programs/vim.nix	
 	];
 
 	home.sessionVariables = {
