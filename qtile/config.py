@@ -45,13 +45,13 @@ keys = [
             desc="Move focus up in stack pane"),
 
         # Move windows up or down in current stack
-        Key([mod, "control"], "k", lazy.layout.shuffle_down(),
+        Key([mod, "shift"], "s", lazy.layout.shuffle_down(),
             desc="Move window down in current stack "),
-        Key([mod, "control"], "j", lazy.layout.shuffle_up(),
+        Key([mod, "shift"], "f", lazy.layout.shuffle_up(),
             desc="Move window up in current stack "),
-        Key([mod, "control"], "e", lazy.layout.shuffle_left(),
+        Key([mod, "shift"], "r", lazy.layout.shuffle_left(),
             desc="Move window left in current stack "),
-        Key([mod, "control"], "u", lazy.layout.shuffle_right(),
+        Key([mod, "shift"], "t", lazy.layout.shuffle_right(),
             desc="Move window right in current stack "),
 
         # Switch window focus to other pane(s) of stack
@@ -84,7 +84,7 @@ keys = [
         Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
         ]
 
-groups = [Group(i) for i in "aoeui"]
+groups = [Group(i) for i in "12345"]
 
 for i in groups:
     keys.extend([
@@ -127,8 +127,9 @@ extension_defaults = widget_defaults.copy()
 def topbar():
     return bar.Bar(
             [
+                widget.CurrentLayoutIcon(),
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(this_current_screen_border="#00ff00"),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -137,10 +138,10 @@ def topbar():
                         },
                     name_transform=lambda name: name.upper(),
                     ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Volume(foreground="#00ffff"),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p',
+                    foreground="#ffff00"),
                 widget.QuickExit(),
                 ],
             24,
