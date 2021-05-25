@@ -19,6 +19,7 @@ in
 
 	home.sessionVariables = {
 		EDITOR = "vim";
+    PATH = "$PATH:/home/zell/.bin/";
 	};
 
 	home.packages = [
