@@ -13,6 +13,11 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
 
               };
             background_opacity = 0.7;
+            font = {
+              normal = {
+                family = "MesloLGS NF";
+              };
+            };
         };
     };
 }

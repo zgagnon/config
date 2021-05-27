@@ -26,36 +26,37 @@ in
 	};
 
 	home.packages = [
-		autorandr
-		zsh-powerlevel10k
-			(lowPrio vim)
-      ghc
-			dmenu
-      espanso
-			exa
-			fasd
-			obsidian
-			pavucontrol
-      picom
-      slack
-			spotify
-			trayer
-			vimPlugins.Tabular
-			vimPlugins.airline
-			vimPlugins.molokai
-			vimPlugins.nerdtree
-			vimPlugins.rainbow_parentheses
-			vimPlugins.repeat
-			vimPlugins.vim-colors-solarized
-			vimPlugins.vim-javascript
-			vimPlugins.vim-markdown
-			vimPlugins.vim-nix
-			vimPlugins.vim-ruby
-			vimPlugins.vim-surround
-      pkgsUnstable.wally-cli
-      xclip
-      xorg.xmodmap
-			zoom-us
+        autorandr
+        zsh-powerlevel10k
+        (lowPrio vim)
+        albert
+        ghc
+        dmenu
+        espanso
+        exa
+        fasd
+        jetbrains.idea-ultimate
+        obsidian
+        pavucontrol
+        qtile
+        slack
+        spotify
+        trayer
+        vimPlugins.Tabular
+        vimPlugins.airline
+        vimPlugins.molokai
+        vimPlugins.nerdtree
+        vimPlugins.rainbow_parentheses
+        vimPlugins.repeat
+        vimPlugins.vim-colors-solarized
+        vimPlugins.vim-javascript
+        vimPlugins.vim-markdown
+        vimPlugins.vim-nix
+        vimPlugins.vim-ruby
+        vimPlugins.vim-surround
+        pkgsUnstable.wally-cli
+        xclip
+        zoom-us
 	];
 # Home Manager needs a bit of information about you and the
 # paths it should manage.

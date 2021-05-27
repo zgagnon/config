@@ -200,7 +200,7 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup_once
 def autostart():
     processes = [
-            ['autorandr', '--load', 'home'],
+            ['autorandr', 'change'],
             ['picom']
             ]
 
