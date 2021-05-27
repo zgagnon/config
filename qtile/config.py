@@ -35,7 +35,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = "nixGL alacritty"
+terminal = "alacritty"
 
 keys = [
         # Switch between windows in current stack pane
@@ -141,8 +141,6 @@ def topbar():
                     ),
                 widget.Volume(foreground="#00ffff"),
                 widget.Systray(),
-                widget.CPU(),
-                widget.CPUGraph(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p',
                     foreground="#ffff00"),
                 widget.QuickExit(),

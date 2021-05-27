@@ -42,6 +42,7 @@ in
         nerdfonts
         obsidian
         pavucontrol
+        picom
         qtile
         slack
         spotify

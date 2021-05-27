@@ -10,9 +10,9 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
         };
          font = {
                         normal = {
-                            family = "MesloLGS NF";
+                            family = "MesloLGM Nerd Font";
                             style = "Regular";
-                            size = 18;
+                            size = 16;
                         };
                     };
             colors = {
