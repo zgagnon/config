@@ -69,11 +69,12 @@ keys = [
         # Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         #     desc="Toggle between split and unsplit sides of stack"),
         Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-        # Open DMenu launcher
+        # Open Rofi launcher
         Key([mod, "shift"], "Return",
-            lazy.spawn("dmenu_run -p 'Run: '"),
+            lazy.spawn(".config/qtile/run.sh"),
             desc='Run Launcher'
             ),
+
 
         # Toggle between different layouts as defined below
         Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),

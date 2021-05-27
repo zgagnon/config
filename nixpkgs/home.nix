@@ -17,12 +17,14 @@ in
 		./programs/alacritty.nix
 		./programs/git.nix
 		./programs/vim.nix	
-		./programs/zsh.nix	
+		./programs/zsh.nix
+		./programs/rofi/default.nix
 	];
 
 	home.sessionVariables = {
 		EDITOR = "vim";
     PATH = "$PATH:/home/zell/.bin/";
+    LOCALES_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
 	};
 
 	home.packages = [
