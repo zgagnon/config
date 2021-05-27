@@ -14,7 +14,7 @@ in
 
 	imports = [
 		./role/nixos/index.nix
-		./programs/alacritty.nix
+		./programs/alacritty/default.nix
 		./programs/git.nix
 		./programs/vim.nix	
 		./programs/zsh.nix
