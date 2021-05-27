@@ -35,7 +35,9 @@ in
         espanso
         exa
         fasd
+        fontpreview
         jetbrains.idea-ultimate
+        nerdfonts
         obsidian
         pavucontrol
         qtile

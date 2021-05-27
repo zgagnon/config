@@ -35,7 +35,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "nixGL alacritty"
 
 keys = [
         # Switch between windows in current stack pane
@@ -200,7 +200,7 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup_once
 def autostart():
     processes = [
-            ['autorandr', 'change'],
+            ['autorandr', '--change'],
             ['picom']
             ]
 
