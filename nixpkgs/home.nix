@@ -15,9 +15,9 @@ in
 	imports = [
 		./role/nixos/index.nix
 		./programs/alacritty/default.nix
-		./programs/git.nix
-		./programs/vim.nix	
-		./programs/zsh.nix
+		./programs/git/default.nix
+		./programs/vim/default.nix
+		./programs/zsh/default.nix
 		./programs/rofi/default.nix
 	];
 
