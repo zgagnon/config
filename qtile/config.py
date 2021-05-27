@@ -140,6 +140,8 @@ def topbar():
                     ),
                 widget.Volume(foreground="#00ffff"),
                 widget.Systray(),
+                widget.CPU(),
+                widget.CPUGraph(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p',
                     foreground="#ffff00"),
                 widget.QuickExit(),
