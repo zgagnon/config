@@ -35,7 +35,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "nixGL alacritty"
 
 keys = [
         # Switch between windows in current stack pane
@@ -127,28 +127,42 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 def topbar():
     return bar.Bar(
-            [
-                widget.CurrentLayoutIcon(),
-                widget.CurrentLayout(),
-                widget.GroupBox(this_current_screen_border="#00ff00"),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                        },
-                    name_transform=lambda name: name.upper(),
-                    ),
-                widget.Volume(foreground="#00ffff"),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p',
-                    foreground="#ffff00"),
-                widget.QuickExit(),
-                ],
-            24,
-            opacity=0.4,
-            margin=[0,0,10,0]
-            )
+        [
+            widget.CurrentLayoutIcon(),
+            widget.CurrentLayout(),
+            widget.GroupBox(this_current_screen_border="#00ff00"),
+            widget.Prompt(),
+            widget.WindowName(),
+            widget.Chord(
+                chords_colors={
+                    'launch': ("#ff0000", "#ffffff"),
+                },
+                name_transform=lambda name: name.upper(),
+            ),
+            widget.Systray(),
+            widget.Volume(foreground="#00ffff"),
+            widget.Clock(format='%Y-%m-%d %a %I:%M %p',
+                         foreground="#ffff00"),
+            widget.QuickExit(),
+        ],
+        24,
+        opacity=0.4,
+        margin=[0, 0, 30, 0]
+    )
+
+
+def bottombar():
+    return bar.Bar(
+        [
+            widget.CPU(),
+            widget.CPUGraph(),
+        ],
+        24,
+        opacity=0.4,
+        margin=[10, 0, 0, 0]
+    )
+
+
 screens = [
         Screen(
             top=topbar()
@@ -201,9 +215,10 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup_once
 def autostart():
     processes = [
-            ['autorandr', '--change'],
-            ['picom']
-            ]
+        ['autorandr', '--change'],
+        ['picom'],
+        ['deadd-notification-center']
+    ]
 
     for p in processes:
         subprocess.Popen(p)

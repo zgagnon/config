@@ -33,11 +33,13 @@ in
         (lowPrio vim)
         albert
         ghc
+        pkgsUnstable.deadd-notification-center
         dmenu
         espanso
         exa
         fasd
         fontpreview
+        htop
         jetbrains.idea-ultimate
         nerdfonts
         obsidian
