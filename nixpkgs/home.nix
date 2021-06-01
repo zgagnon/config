@@ -28,6 +28,7 @@ in
 	};
 
 	home.packages = [
+        _1password-gui
         autorandr
         zsh-powerlevel10k
         (lowPrio vim)
@@ -38,6 +39,7 @@ in
         espanso
         exa
         fasd
+        ffmpeg
         fontpreview
         htop
         jetbrains.idea-ultimate
@@ -48,6 +50,7 @@ in
         qtile
         slack
         spotify
+        xfce.thunar
         trayer
         vimPlugins.Tabular
         vimPlugins.airline
@@ -61,6 +64,7 @@ in
         vimPlugins.vim-nix
         vimPlugins.vim-ruby
         vimPlugins.vim-surround
+        vivaldi
         pkgsUnstable.wally-cli
         xclip
         zoom-us
