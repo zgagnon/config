@@ -19,8 +19,7 @@ matches:
     vars:
       - name: mydate
         type: date
-        params:
-          format: "%Y%m%d"
+        format: "%Y%m%d"
   - trigger: ";now"
     replace: "{{mytime}}"
     vars:
@@ -99,4 +98,5 @@ matches:
       Zoe
   # Write Speak Code specific
   - trigger: "WSC"
-    replace: Write/Speak/Code
+    replace: |
+      Write/Speak/Code
