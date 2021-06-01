@@ -75,6 +75,9 @@ keys = [
             desc='Run Launcher'
             ),
 
+        # Quick open specific programs
+        Key([mod], "p", lazy.spawn("pavucontrol"),
+            desc='Run Pulse Audio colume control'),
 
         # Toggle between different layouts as defined below
         Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
