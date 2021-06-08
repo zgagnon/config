@@ -1,0 +1,7 @@
+
+xmonad.hs:13:1: warning: [-Wtabs]
+    Tab character found here, and in 47 further locations.
+    Please use spaces instead.
+   |
+13 |                                 tiled = Tall nmaster delta ratio
+   | ^^^^^^^^

@@ -174,8 +174,6 @@ screens = [
             ),
         Screen(
             top=topbar(),
-            wallpaper='/home/zell/Documents/wallpapers/fuji.jpg',
-            wallpaper_mode='fill',
             left=bar.Gap(10),
             right=bar.Gap(10),
             bottom=bar.Gap(10),
@@ -220,8 +218,8 @@ focus_on_window_activation = "smart"
 @hook.subscribe.startup_once
 def autostart():
     processes = [
-        ['autorandr', '--change'],
-        ['picom'],
+#        ['autorandr', '--change'],
+#        ['picom'],
         ['deadd-notification-center']
     ]
 

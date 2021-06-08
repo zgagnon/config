@@ -90,6 +90,11 @@ in
 
 	services.syncthing.enable = true;
 
+  xsession.windowManager.xmonad = {
+    enable = true;
+    enableContribAndExtras = true;
+  };
+
 # This value determines the Home Manager release that your
 # configuration is compatible with. This helps avoid breakage
 # when a new Home Manager release introduces backwards
