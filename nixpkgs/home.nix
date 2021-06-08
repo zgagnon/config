@@ -19,6 +19,7 @@ in
 		./programs/vim/default.nix
 		./programs/zsh/default.nix
 		./programs/rofi/default.nix
+    ./programs/polybar/default.nix
 	];
 
 	home.sessionVariables = {
@@ -47,6 +48,7 @@ in
         obsidian
         pavucontrol
         picom
+        polybar
         qtile
         slack
         spotify
