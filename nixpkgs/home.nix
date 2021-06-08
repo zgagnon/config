@@ -36,6 +36,7 @@ in
         albert
         ghc
         pkgsUnstable.deadd-notification-center
+        discord
         dmenu
         espanso
         exa
@@ -45,7 +46,9 @@ in
         htop
         jetbrains.idea-ultimate
         nerdfonts
+        nitrogen
         obsidian
+        openvpn
         pavucontrol
         picom
         polybar
