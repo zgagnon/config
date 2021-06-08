@@ -78,6 +78,8 @@ keys = [
         # Quick open specific programs
         Key([mod], "p", lazy.spawn("pavucontrol"),
             desc='Run Pulse Audio colume control'),
+        Key([mod], "o", lazy.spawn("obsidian"),
+            desc='Open Obsididan'),
 
         # Toggle between different layouts as defined below
         Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -109,7 +111,7 @@ layouts = [
         layout.Max(),
         layout.Stack(num_stacks=2),
         # Try more layouts by unleashing below layouts.
-        layout.Bsp(),
+        layout.Bsp(border_focus='#ffff00', margin=3),
         # layout.Columns(),
         # layout.Matrix(),
         layout.MonadTall(),
