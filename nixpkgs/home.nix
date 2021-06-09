@@ -52,7 +52,6 @@ in
         openvpn
         pavucontrol
         picom
-        polybar
         qtile
         slack
         spotify

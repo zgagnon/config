@@ -1,14 +1,24 @@
+{config, pkgs, ...}:
+
+let
+    myPolybar = pkgs.polybar.override {
+     alsaSupport = true;
+     githubSupport = true;
+     pulseSupport = true;
+    };
+
+    colors = builtins.readFile ./colors.ini;
+    bars = builtins.readFile ./bars.ini;
+
+    launchScript = builtins.readFile ./polybar.sh;
+in
 {
   services.polybar = {
     enable = true;
+    package = myPolybar;
     script = "polybar mainbar &";
-    config = {
-      "bar/mainbar" = {
-        width="100%";
-        height=200;
-        "offset-y"=20;
-        background="#000";
-      };
-    };
+    extraConfig = bars + colors;
   };
+
+  xsession.profileExtra = launchScript;
 }
