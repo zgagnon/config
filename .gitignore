@@ -1,2 +1,3 @@
 .idea/
 qtile/__pycache__
+.direnv/
