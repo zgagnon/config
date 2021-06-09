@@ -19,7 +19,8 @@ matches:
     vars:
       - name: mydate
         type: date
-        format: "%Y%m%d"
+        params:
+          format: "%Y%m%d"
   - trigger: ";now"
     replace: "{{mytime}}"
     vars:
