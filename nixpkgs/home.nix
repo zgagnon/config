@@ -19,7 +19,8 @@ in
 		./programs/vim/default.nix
 		./programs/zsh/default.nix
 		./programs/rofi/default.nix
-    ./programs/polybar/default.nix
+        ./programs/polybar/default.nix
+        ./programs/xmonad/default.nix
 	];
 
 	home.sessionVariables = {
