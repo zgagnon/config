@@ -93,6 +93,11 @@ in
   xsession = {
     enable = true;
 
+    profileExtra = builtins.concatStringsSep "\n" [
+      "autorandr --change"
+      "nitrogen --random --set-centered --head=0 wallpaper"
+      "nitrogen --random --set-centered --head=1 wallpaper"
+    ];
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
