@@ -90,9 +90,13 @@ in
 
 	services.syncthing.enable = true;
 
-  xsession.windowManager.xmonad = {
+  xsession = {
     enable = true;
-    enableContribAndExtras = true;
+
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+    };
   };
 
 # This value determines the Home Manager release that your
