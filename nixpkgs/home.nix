@@ -42,6 +42,7 @@ in
         espanso
         exa
         fasd
+        feh
         ffmpeg
         fontpreview
         htop
@@ -95,8 +96,8 @@ in
 
     profileExtra = builtins.concatStringsSep "\n" [
       "autorandr --change"
-      "nitrogen --random --set-centered --head=0 wallpaper"
-      "nitrogen --random --set-centered --head=1 wallpaper"
+      "feh --bg-fill --randomize wallpaper/"
+#      "picom"
     ];
     windowManager.xmonad = {
       enable = true;
