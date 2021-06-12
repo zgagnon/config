@@ -45,8 +45,10 @@ in
         feh
         ffmpeg
         fontpreview
+        mesa-demos
         htop
-        jetbrains.idea-ultimate
+        pkgsUnstable.jetbrains.idea-ultimate
+        pkgsUnstable.jetbrains.jdk
         nerdfonts
         nitrogen
         obsidian

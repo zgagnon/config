@@ -11,13 +11,27 @@ let
     bars = builtins.readFile ./bars.ini;
 
     launchScript = builtins.readFile ./polybar.sh;
+
+    xmonad = ''
+    [module/xmonad]
+    type = custom/script
+    exec = ${pkgs.xmonad-log}/bin/xmonad-log
+
+    tail = true
+    '';
 in
 {
+
+  home.packages = [
+    pkgs.font-awesome
+    ];
+
   services.polybar = {
     enable = true;
     package = myPolybar;
-    script = "polybar mainbar &";
-    extraConfig = bars + colors;
+    script = "polybar example &";
+    config = ./bars.ini;
+    extraConfig = xmonad;
   };
 
   xsession.profileExtra = launchScript;
