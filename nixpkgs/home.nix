@@ -21,6 +21,7 @@ in
 		./programs/rofi/default.nix
         ./programs/polybar/default.nix
         ./programs/xmonad/default.nix
+        ./programs/syncthing/default.nix
 	];
 
 	home.sessionVariables = {
@@ -45,6 +46,7 @@ in
         feh
         ffmpeg
         fontpreview
+        font-awesome
         mesa-demos
         htop
         pkgsUnstable.jetbrains.idea-ultimate
@@ -91,20 +93,20 @@ in
 		enableZshIntegration = true;
 	};
 
-	services.syncthing.enable = true;
+    services.syncthing.enable = true;
+    services.pasystray.enable = true;
+    xsession = {
+        enable = true;
 
-  xsession = {
-    enable = true;
-
-    profileExtra = builtins.concatStringsSep "\n" [
-      "autorandr --change"
-      "feh --bg-fill --randomize wallpaper/"
-#      "picom"
-    ];
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-    };
+        profileExtra = builtins.concatStringsSep "\n" [
+            "autorandr --change"
+            "feh --bg-fill --randomize wallpaper/"
+            "picom --xrender-sync-fence"
+        ];
+        windowManager.xmonad = {
+            enable = true;
+            enableContribAndExtras = true;
+        };
   };
 
 # This value determines the Home Manager release that your
