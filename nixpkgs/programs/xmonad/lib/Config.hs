@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -fno-warn-missing-signatures #-}
 module Config where
 import XMonad
+import XMonad.Util.EZConfig
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.FloatSnap
 import XMonad.Actions.Navigation2D
@@ -11,12 +12,15 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.Minimize
 import XMonad.Hooks.Place
+
 import qualified XMonad.Layout.BoringWindows as B
-import XMonad.Layout.IM
 import XMonad.Layout.LayoutModifier (ModifiedLayout(..))
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Layout.Tabbed
+import XMonad.Layout.BinarySpacePartition
+import XMonad.Layout.Spacing
+
 import System.Exit
 import Graphics.X11.ExtraTypes.XF86
 
@@ -37,10 +41,12 @@ delta = 3 / 100
 fg        = "#ebdbb2"
 bg        = "#282828"
 gray      = "#a89984"
-bg1       = "#3c3836"
-bg2       = "#504945"
-bg3       = "#665c54"
-bg4       = "#7c6f64"
+
+bg1       = "#389"
+bg2       = "#8bc"
+bg3       = "#755"
+bg4      = "#edc"
+bg5       = "#cbc"
 
 green     = "#b8bb26"
 darkgreen = "#98971a"
@@ -51,20 +57,20 @@ blue      = "#83a598"
 purple    = "#d3869b"
 aqua      = "#8ec07c"
 
-myIM :: LayoutClass l a => l a -> ModifiedLayout AddRoster l a
-myIM = withIM (1 % 4) (ClassName "TelegramDesktop")
-
 myLayouts = renamed [CutWordsLeft 1] .
     avoidStruts .  B.boringWindows $
-    smartBorders
+    smartBorders $
+    spacing 5
         ( aTiled
         ||| aFullscreen
         ||| aTabbed
+        ||| Mirror aTiled
+        ||| emptyBSP
         )
   where
-    aTabbed = renamed [Replace "Tab"] $ myIM $ tabbedBottom shrinkText  defTabbed
+    aTabbed = renamed [Replace "Tab"] $ tabbedBottom shrinkText  defTabbed
     aFullscreen = renamed [Replace "Full"] $ noBorders Full
-    aTiled = renamed [Replace "Main"] $ myIM $ Tall 1 (3 / 100) (1 / 2)
+    aTiled = renamed [Replace "Main"] $ Tall 1 (3 / 100) (1 / 2)
     defTabbed = def
         { activeColor = bg
         , urgentColor = red
@@ -104,6 +110,33 @@ myManageHook = composeAll
     role = stringProperty "WM_WINDOW_ROLE"
 
 myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
+
+newKeys = \c -> mkKeymap c $
+    -- Launchers
+    [ ("M-S-<Return>", spawn "rofi -show run")
+    , ("M-<Return>", spawn $ terminal c)
+    , ("M-S-<Backspace> p", spawn "pavucontrol")
+    , ("M-S-<Backspace> v", spawn "vivaldi")
+    -- Window arrangement
+    , ("M-S-m", windows W.swapMaster)
+    , ("M-<Space>", sendMessage NextLayout)
+    , ("M-r", sendMessage Rotate)
+    , ("M-S-c", sendMessage SelectNode)
+    , ("M-S-v", sendMessage MoveNode)
+    -- Push back in to tiling
+    , ("M-t", withFocused $ windows . W.sink)
+    -- Window Sizing
+    , ("M-S-<Down>", sendMessage $ ShrinkFrom U)
+    , ("M-S-<Up>", sendMessage $ ExpandTowards U)
+    , ("M-S-<Right>", sendMessage $ ExpandTowards R)
+    , ("M-S-<Left>", sendMessage $ ShrinkFrom R)
+    -- Navigation
+    , ("M-<Left>", windowGo L False)
+    , ("M-<Right>", windowGo R False)
+    , ("M-<Up>", windowGo U False)
+    , ("M-<Down>", windowGo D False)
+    , ("M-w", kill)
+    ]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm, xK_Return), spawn $ XMonad.terminal conf)
@@ -192,13 +225,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 myLogHook :: D.Client -> PP
 myLogHook dbus = def
     { ppOutput = dbusOutput dbus
-    , ppCurrent = wrap ("%{B" ++ bg2 ++ "} ") " %{B-}"
-    , ppVisible = wrap ("%{B" ++ bg1 ++ "} ") " %{B-}"
+    , ppCurrent = wrap ("%{F" ++ bg3 ++ "} ") ("%{F" ++ bg4 ++ "} ")
+    , ppVisible = wrap ("%{F" ++ bg4 ++ "} ") ""
     , ppUrgent = wrap ("%{F" ++ red ++ "} ") " %{F-}"
-    , ppHidden = wrap " " " "
+    , ppHidden = wrap "" " "
     , ppWsSep = ""
     , ppSep = " : "
     , ppTitle = shorten 40
+    , ppLayout = wrap ("%{F" ++ bg4 ++ "} ") ""
     }
 
 -- Emit a DBus signal on log updates
@@ -214,7 +248,7 @@ dbusOutput dbus str = do
     memberName = D.memberName_ "Update"
 
 myConfig = def
-    { terminal = "termite"
+    { terminal = "alacritty"
     , layoutHook = myLayouts
     , manageHook = placeHook (smart (0.5, 0.5))
                     <+> manageDocks
@@ -222,12 +256,11 @@ myConfig = def
                     <+> myManageHook'
                     <+> manageHook def
     , handleEventHook = docksEventHook <+> minimizeEventHook <+> fullscreenEventHook
-    , keys = myKeys
+    , keys = newKeys
     -- Don't be stupid with focus
-    , focusFollowsMouse = False
     , clickJustFocuses = False
-    , borderWidth = 2
+    , borderWidth = 3
     , normalBorderColor = gray
-    , focusedBorderColor = green
+    , focusedBorderColor = "#00FF00"
     , workspaces = workspaces'
     , modMask = modMask' }
