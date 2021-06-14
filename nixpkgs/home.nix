@@ -101,7 +101,6 @@ in
         profileExtra = builtins.concatStringsSep "\n" [
             "autorandr --change"
             "feh --bg-fill --randomize wallpaper/"
-            "picom --xrender-sync-fence"
         ];
         windowManager.xmonad = {
             enable = true;

@@ -136,7 +136,15 @@ newKeys = \c -> mkKeymap c $
     , ("M-<Up>", windowGo U False)
     , ("M-<Down>", windowGo D False)
     , ("M-w", kill)
+    -- Workspaces
     ]
+    --
+    -- mod-[1..9], Switch to workspace N
+    -- mod-shift-[1..9], Move client to workspace N
+    --
+--    [((m .|. modm, k), windows $ f i)
+--        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+--        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm, xK_Return), spawn $ XMonad.terminal conf)
