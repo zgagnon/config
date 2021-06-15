@@ -117,6 +117,8 @@ newKeys = \c -> mkKeymap c $
     , ("M-<Return>", spawn $ terminal c)
     , ("M-S-<Backspace> p", spawn "pavucontrol")
     , ("M-S-<Backspace> v", spawn "vivaldi")
+    , ("M-S-<Backspace> o", spawn "obsidian")
+		, ("M-S-<Backspace> s", spawn "flameshot")
     -- Window arrangement
     , ("M-S-m", windows W.swapMaster)
     , ("M-<Space>", sendMessage NextLayout)
@@ -256,7 +258,7 @@ dbusOutput dbus str = do
     memberName = D.memberName_ "Update"
 
 myConfig = def
-    { terminal = "alacritty"
+    { terminal = "nixGL alacritty"
     , layoutHook = myLayouts
     , manageHook = placeHook (smart (0.5, 0.5))
                     <+> manageDocks

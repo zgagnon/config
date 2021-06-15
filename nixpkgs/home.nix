@@ -45,13 +45,14 @@ in
         fasd
         feh
         ffmpeg
+        flameshot
         fontpreview
         font-awesome
         mesa-demos
         htop
         pkgsUnstable.jetbrains.idea-ultimate
         pkgsUnstable.jetbrains.jdk
-        nerdfonts
+       nerdfonts
         nitrogen
         obsidian
         openvpn

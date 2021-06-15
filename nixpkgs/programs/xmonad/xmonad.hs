@@ -13,6 +13,7 @@ import Config
 main :: IO ()
 main = do
     dbus <- D.connectSession
+
     -- Request access to the DBus name
     D.requestName dbus (D.busName_ "org.xmonad.Log")
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
@@ -21,4 +22,5 @@ main = do
         withNavigation2DConfig defaultNavigation2DConfig $
             myConfig
                 { logHook = dynamicLogWithPP (myLogHook dbus)
-				, startupHook = spawn "polybar-restart" }
+		 		, startupHook = do
+								spawn "systemctl --user restart polybar"}
