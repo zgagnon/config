@@ -54,6 +54,7 @@ in
         pkgsUnstable.jetbrains.jdk
        nerdfonts
         nitrogen
+        nomacs
         obsidian
         openvpn
         pavucontrol
