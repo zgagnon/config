@@ -104,6 +104,7 @@ myManageHook = composeAll
     , className =? "Thunar"           --> doFloat
     , className =? "Qalculate-gtk"    --> doFloat
     , className =? "Pcmanfm"          --> doFloat
+    , className =? "Dunst"          --> doFloat
     -- Used by Chromium developer tools, maybe other apps as well
     , role =? "pop-up"                --> doFloat ]
   where

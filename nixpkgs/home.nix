@@ -22,6 +22,7 @@ in
         ./programs/polybar/default.nix
         ./programs/xmonad/default.nix
         ./programs/syncthing/default.nix
+      ./programs/dunst/default.nix
 	];
 
 	home.sessionVariables = {
@@ -52,6 +53,7 @@ in
         htop
         pkgsUnstable.jetbrains.idea-ultimate
         pkgsUnstable.jetbrains.jdk
+      libnotify
        nerdfonts
         nitrogen
         nomacs
