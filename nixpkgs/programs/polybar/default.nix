@@ -49,7 +49,10 @@ in
   services.polybar = {
     enable = true;
     package = myPolybar;
-    script = "polybar example &";
+    script = ''
+      polybar example &
+      polybar left &
+      '';
     settings = {
         "module/xmonad" = {
             type = "custom/script";
@@ -131,6 +134,36 @@ in
 
             tray-position = "center";
             tray-padding = 2;
+        };
+        "bar/left" = {
+            monitor = "\${env:MONITOR:HDMI-1}";
+            monitor-fallback = "\${env:MONITOR:DP-2}";
+            width = "100%";
+            height = 24;
+            offset-x = 0;
+            offset-y = 0;
+
+            background = builtins.elemAt colors.bgs 2;
+            foreground = colors.foreground;
+
+            overline-size = 2;
+            underline-size = 2;
+
+            border-bottom = 0;
+            border-bottom-color = "#333";
+
+            spacing = 1;
+            padding-left = 0;
+            module-margin-left = 1;
+            module-margin-right = 2;
+
+            font-0 = "MesloLGM Nerd Font:pixelsize=16;0";
+            font-1 = "MesloLGM Nerd Font Mono:pixelsize=18;0";
+
+            modules-left = "xmonad";
+            modules-center = "";
+            modules-right = "";
+
         };
     };
   };
