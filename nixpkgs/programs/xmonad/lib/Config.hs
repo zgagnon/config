@@ -68,9 +68,9 @@ myLayouts = renamed [CutWordsLeft 1] .
         ||| emptyBSP
         )
   where
-    aTabbed = renamed [Replace "Tab"] $ tabbedBottom shrinkText  defTabbed
+    aTabbed = renamed [Replace "Tab"] $ simpleTabbed
     aFullscreen = renamed [Replace "Full"] $ noBorders Full
-    aTiled = renamed [Replace "Main"] $ Tall 1 (3 / 100) (1 / 2)
+    aTiled = renamed [Replace "Tile"] $ Tall 1 (3 / 100) (1 / 2)
     defTabbed = def
         { activeColor = bg
         , urgentColor = red
@@ -118,7 +118,7 @@ newKeys = \c -> mkKeymap c $
     , ("M-S-<Backspace> p", spawn "pavucontrol")
     , ("M-S-<Backspace> v", spawn "vivaldi")
     , ("M-S-<Backspace> o", spawn "obsidian")
-		, ("M-S-<Backspace> s", spawn "flameshot")
+		, ("M-S-<Backspace> s", spawn "flameshot gui")
     -- Window arrangement
     , ("M-S-m", windows W.swapMaster)
     , ("M-<Space>", sendMessage NextLayout)
