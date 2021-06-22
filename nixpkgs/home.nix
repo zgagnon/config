@@ -9,7 +9,7 @@ in
 # Let Home Manager install and manage itself.
 	programs.home-manager = {
 		enable = true;
-		path = "$HOME/rc";
+		path = "$HOME/config";
 	};
 
 	imports = [
@@ -26,7 +26,7 @@ in
 	];
 
 	home.sessionVariables = {
-		EDITOR = "vim";
+		EDITOR = "emacs";
     PATH = "$PATH:/home/zell/.bin/";
     LOCALES_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
 	};
@@ -97,7 +97,10 @@ in
 		enableZshIntegration = true;
 	};
 
-    services.syncthing.enable = true;
+  programs.emacs = {
+    enable = true;
+  };
+
     services.pasystray.enable = true;
     xsession = {
         enable = true;

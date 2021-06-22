@@ -137,7 +137,7 @@ in
         };
         "bar/left" = {
             monitor = "\${env:MONITOR:HDMI-1}";
-            monitor-fallback = "\${env:MONITOR:DP-2}";
+            monitor-fallback = "\${env:MONITOR:HDMI-0}";
             width = "100%";
             height = 24;
             offset-x = 0;
