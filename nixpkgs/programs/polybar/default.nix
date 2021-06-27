@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{pkgs, mainMonitor, sideMonitor}:
 
 let
     myPolybar = pkgs.polybar.override {
@@ -41,12 +41,11 @@ let
     sep = text: bg: colorBar text bg + "%{T2} %{T-}";
 in
 {
-
-  home.packages = [
+  packages = [
     pkgs.font-awesome
-    ];
+  ];
 
-  services.polybar = {
+  config = {
     enable = true;
     package = myPolybar;
     script = ''
@@ -104,8 +103,7 @@ in
         };
 
         "bar/example" = {
-            monitor = "\${env:MONITOR:DP-3}";
-            monitor-fallback = "\${env:MONITOR:DP-2}";
+            monitor = mainMonitor;
             width = "100%";
             height = 24;
             offset-x = 0;
@@ -136,8 +134,7 @@ in
             tray-padding = 2;
         };
         "bar/left" = {
-            monitor = "\${env:MONITOR:HDMI-1}";
-            monitor-fallback = "\${env:MONITOR:HDMI-0}";
+            monitor = sideMonitor;
             width = "100%";
             height = 24;
             offset-x = 0;
@@ -167,6 +164,4 @@ in
         };
     };
   };
-
-  xsession.profileExtra = launchScript;
 }

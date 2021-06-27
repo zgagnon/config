@@ -1,3 +1,4 @@
 .idea/
 qtile/__pycache__
 .direnv/
+nixpkgs/home.nix

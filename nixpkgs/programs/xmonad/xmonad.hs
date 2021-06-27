@@ -10,17 +10,22 @@ import qualified DBus.Client as D
 
 import Config
 
-main :: IO ()
-main = do
-    dbus <- D.connectSession
+xmonadConfig = createConfig "<TERMINAL>"
+
+--xmonadMain :: XConfig l0 -> IO ()
+xmonadMain = do {
+    dbus <- D.connectSession;
 
     -- Request access to the DBus name
     D.requestName dbus (D.busName_ "org.xmonad.Log")
-        [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
+        [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue];
 
     xmonad . ewmh . withUrgencyHook NoUrgencyHook .
         withNavigation2DConfig defaultNavigation2DConfig $
-            myConfig
+            xmonadConfig
                 { logHook = dynamicLogWithPP (myLogHook dbus)
 		 		, startupHook = do
-								spawn "systemctl --user restart polybar"}
+								spawn "systemctl --user restart polybar"};
+}
+main :: IO ()
+main = xmonadMain

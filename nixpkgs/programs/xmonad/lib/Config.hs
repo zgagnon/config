@@ -258,8 +258,8 @@ dbusOutput dbus str = do
     interfaceName = D.interfaceName_ "org.xmonad.Log"
     memberName = D.memberName_ "Update"
 
-myConfig = def
-    { terminal = "nixGL alacritty"
+createConfig localTerminal =  def
+    { terminal = localTerminal
     , layoutHook = myLayouts
     , manageHook = placeHook (smart (0.5, 0.5))
                     <+> manageDocks
