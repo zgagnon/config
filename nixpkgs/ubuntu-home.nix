@@ -16,11 +16,14 @@ let
       terminal = "nixGL alacritty";
     };
 
-    universalPackages = import ./programs/packages.nix;
+    universalPackages = import ./programs/packages.nix {
+        pkgs = pkgs;
+        pkgsUnstable = pkgsUnstable;
+    };
 
-    packages = polybar.packages
-    ++ xmonad.packages
-    ++ universalPackages;
+    packages = universalPackages
+        ++ xmonad.packages
+        ++ polybar.packages;
 in
 
 {
