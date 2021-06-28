@@ -49,7 +49,7 @@ in
     enable = true;
     package = myPolybar;
     script = ''
-      polybar example &
+      polybar mainbar &
       polybar left &
       '';
     settings = {
@@ -102,7 +102,7 @@ in
             margin-bottom = 0;
         };
 
-        "bar/example" = {
+        "bar/mainbar" = {
             monitor = mainMonitor;
             width = "100%";
             height = 24;
@@ -114,9 +114,6 @@ in
 
             overline-size = 2;
             underline-size = 2;
-
-            border-bottom = 0;
-            border-bottom-color = "#333";
 
             spacing = 1;
             padding-left = 0;
@@ -145,9 +142,6 @@ in
 
             overline-size = 2;
             underline-size = 2;
-
-            border-bottom = 0;
-            border-bottom-color = "#333";
 
             spacing = 1;
             padding-left = 0;
