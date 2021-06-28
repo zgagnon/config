@@ -2,6 +2,7 @@
     
 with pkgs; [
   _1password-gui
+  anki
   autorandr
   zsh-powerlevel10k
   (lowPrio vim)
