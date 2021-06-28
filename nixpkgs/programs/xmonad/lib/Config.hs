@@ -61,15 +61,12 @@ myLayouts = renamed [CutWordsLeft 1] .
     avoidStruts .  B.boringWindows $
     smartBorders $
     spacing 5
-        ( aTiled
-        ||| aFullscreen
+        ( emptyBSP
         ||| aTabbed
         ||| Mirror aTiled
-        ||| emptyBSP
         )
   where
     aTabbed = renamed [Replace "Tab"] $ simpleTabbed
-    aFullscreen = renamed [Replace "Full"] $ noBorders Full
     aTiled = renamed [Replace "Tile"] $ Tall 1 (3 / 100) (1 / 2)
     defTabbed = def
         { activeColor = bg
@@ -139,6 +136,8 @@ newKeys = \c -> mkKeymap c $
     , ("M-<Up>", windowGo U False)
     , ("M-<Down>", windowGo D False)
     , ("M-w", kill)
+    -- Session
+    , ("M-S-q", io exitSuccess)
     -- Workspaces
     ]
     --
