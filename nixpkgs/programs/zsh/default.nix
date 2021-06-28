@@ -6,13 +6,13 @@ with import <nixpkgs> {config = { allowUnfree = true; }; };
 		enable = true;
 		enableAutosuggestions = true;
 		enableVteIntegration = true;
-		dotDir = "rc";
 		initExtra = builtins.concatStringsSep "\n" [
-			"source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
-			"[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh"
-			''eval "$(fasd --init auto)"''						
-      "alias pbcopy='xclip -selection clipboard'"
-      "alias pbpaste='xclip -selection clipboard -o'"
+            "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
+            "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh"
+            ''eval "$(fasd --init auto)"''
+            "alias pbcopy='xclip -selection clipboard'"
+            "alias pbpaste='xclip -selection clipboard -o'"
+            "export NIX_PATH=$HOME/.nix-defexpr/channels\${NIX_PATH:+:}$NIX_PATH"
 		];
 
 		history = {
