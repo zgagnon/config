@@ -114,7 +114,7 @@ myManageHook' = composeOne [ isFullscreen -?> doFullFloat ]
 
 newKeys = \c -> mkKeymap c $
     -- Launchers
-    [ ("M-S-<Return>", spawn "rofi -show run")
+    [ ("M-S-<Return>", spawn "rofi -show combi -combi-modi run,drun")
     , ("M-<Return>", spawn $ terminal c)
     , ("M-S-<Backspace> p", spawn "pavucontrol")
     , ("M-S-<Backspace> v", spawn "vivaldi")
