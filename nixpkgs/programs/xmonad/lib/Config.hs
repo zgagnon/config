@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -fno-warn-missing-signatures #-}
 module Config where
-import XMonad
+import XMonad hiding ( (|||) )  -- don't use the normal ||| operator
+import XMonad.Layout.LayoutCombinators   -- use the one from LayoutCombinators instead
 import XMonad.Util.EZConfig
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.FloatSnap
@@ -120,6 +121,9 @@ newKeys = \c -> mkKeymap c $
     -- Window arrangement
     , ("M-S-m", windows W.swapMaster)
     , ("M-<Space>", sendMessage NextLayout)
+    , ("M-S-6", sendMessage $ JumpToLayout "BSP")
+    , ("M-S-7", sendMessage $ JumpToLayout "Tab")
+    , ("M-S-8", sendMessage $ JumpToLayout "Mirror Tile")
     , ("M-r", sendMessage Rotate)
     , ("M-S-c", sendMessage SelectNode)
     , ("M-S-v", sendMessage MoveNode)

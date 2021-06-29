@@ -13,7 +13,7 @@ let
 
     xmonad = import ./programs/xmonad/default.nix {
       pkgs = pkgs;
-      terminal = "nixGL alacritty";
+      terminal ="nixGL alacritty";
     };
 
     universalPackages = import ./programs/packages.nix {
@@ -79,10 +79,7 @@ in
           "autorandr --change"
           "feh --bg-fill --randomize wallpaper/"
       ];
-      windowManager.xmonad = {
-          enable = true;
-          enableContribAndExtras = true;
-      };
+      windowManager.xmonad = xmonad.xmonad;
   };
 
 # This value determines the Home Manager release that your
