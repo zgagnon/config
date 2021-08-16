@@ -2,11 +2,12 @@
     
 with pkgs; [
   _1password-gui
-  anki
+  anki-bin
   autorandr
   zsh-powerlevel10k
   (lowPrio vim)
   albert
+  bzip2
   ghc
   pkgsUnstable.deadd-notification-center
   discord
@@ -20,6 +21,7 @@ with pkgs; [
   fontpreview
   font-awesome
   mesa-demos
+  mplayer
   htop
   pkgsUnstable.jetbrains.idea-ultimate
   pkgsUnstable.jetbrains.jdk
@@ -48,7 +50,8 @@ with pkgs; [
   vimPlugins.vim-nix
   vimPlugins.vim-ruby
   vimPlugins.vim-surround
-  vivaldi
+  pkgsUnstable.vivaldi
+  pkgsUnstable.vivaldi-ffmpeg-codecs
   pkgsUnstable.wally-cli
   xclip
   zoom-us

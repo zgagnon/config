@@ -25,11 +25,15 @@ let
   ++ xmonad.packages
   ++ universalPackages
   ++ [
+     pkgsUnstable.mozwire  
+     wireguard-tools
      steam
+     cardboard
   ];
 in
 
 {
+
 	imports = [
     ./session.nix
 
@@ -84,6 +88,11 @@ in
           "feh --bg-fill --randomize wallpaper/"
       ];
       windowManager.xmonad = xmonad.xmonad;
+  };
+
+  wayland.windowManager.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
   };
 
 # This value determines the Home Manager release that your
